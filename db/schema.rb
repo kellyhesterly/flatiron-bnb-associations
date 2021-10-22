@@ -10,55 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210708204048) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "listings", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "address"
-    t.string   "listing_type"
-    t.decimal  "price"
-    t.integer  "host_id"
-    t.integer  "neighborhood_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string  "title"
+    t.string  "description"
+    t.string  "address"
+    t.string  "listing_type"
+    t.integer "price"
   end
 
   create_table "neighborhoods", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "city_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "listing_id"
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.date     "checkin"
-    t.date     "checkout"
-    t.integer  "guest_id"
-    t.integer  "listing_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date    "checkin"
+    t.date    "checkout"
+    t.integer "guest_id"
+    t.integer "listing_id"
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.text     "description"
-    t.integer  "rating"
-    t.integer  "guest_id"
-    t.integer  "reservation_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string  "description"
+    t.string  "rating"
+    t.integer "guest_id"
+    t.integer "reservation_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
 end
